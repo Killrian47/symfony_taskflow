@@ -29,6 +29,9 @@ class Task
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?TaskStatus $taskStatusId = null;
 
+    #[ORM\ManyToOne(inversedBy: 'tasks')]
+    private ?User $User = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Task
     public function setTaskStatusId(?TaskStatus $taskStatusId): static
     {
         $this->taskStatusId = $taskStatusId;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): static
+    {
+        $this->User = $User;
 
         return $this;
     }
